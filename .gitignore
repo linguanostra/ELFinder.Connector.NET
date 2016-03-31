@@ -1,0 +1,13 @@
+# Ignore NuGet Packages
+*.nupkg
+# Ignore the NuGet packages folder
+**/packages/*
+# Other stuff
+*~
+._*
+_*
+.DS_Store
+**/.vs
+**/bin/*
+**/obj/*
+**/.tmb_Files/*

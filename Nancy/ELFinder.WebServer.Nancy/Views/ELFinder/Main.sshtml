@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>elFinder 2.0</title>
+
+		<!-- jQuery and jQuery UI (REQUIRED) -->
+		<link rel="stylesheet" type="text/css" href="@Path['~/css/jquery-ui.css']">
+		<script src="@Path['~/js/jquery.min.js']"></script>
+		<script src="@Path['~/js/jquery-ui.min.js']"></script>
+
+		<!-- elFinder CSS (REQUIRED) -->
+		<link rel="stylesheet" type="text/css" href="@Path['~/css/elfinder.min.css']">
+		<link rel="stylesheet" type="text/css" href="@Path['~/css/theme.css']">
+
+		<!-- elFinder JS (REQUIRED) -->
+		<script src="@Path['~/js/elfinder.full.js']"></script>
+
+		<!-- elFinder translation (OPTIONAL) -->
+		<!-- <script src="@Path['~/js/i18n/elfinder.fr.js']"></script> -->
+
+		<!-- elFinder initialization (REQUIRED) -->
+		<script type="text/javascript" charset="utf-8">
+			
+			// Documentation for client options:
+			// https://github.com/Studio-42/elFinder/wiki/Client-configuration-options
+			$(document).ready(function() {
+				
+				$('#elfinder').elfinder({
+					url : "@Path['~/ELFFinderConnector/']",
+					useBrowserHistory: false,
+					rememberLastDir: true					
+					// lang: 'ru'                    // language (OPTIONAL)
+				});
+
+	        });
+
+		</script>
+	</head>
+	<body>
+
+		<!-- Element where elFinder will be created (REQUIRED) -->
+		<div id="elfinder"></div>
+
+	</body>
+</html>

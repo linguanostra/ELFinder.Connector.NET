@@ -1,0 +1,208 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{0C1E3DE2-1858-4EA5-9B95-35648AD24C79}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ELFinder.Connector</RootNamespace>
+    <AssemblyName>ELFinder.Connector</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Newtonsoft.Json.7.0.1\lib\net40\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Commands\Extensions\CommandResultExtensions.cs" />
+    <Compile Include="Commands\Operations\Common\Interfaces\IConnectorMultipleTargetsCommand.cs" />
+    <Compile Include="Commands\Operations\Common\Interfaces\IConnectorSingleTargetCommand.cs" />
+    <Compile Include="Config\ELFinderConfig.cs" />
+    <Compile Include="Config\ELFinderRootVolumeConfigEntry.cs" />
+    <Compile Include="Config\Interfaces\IELFinderConfig.cs" />
+    <Compile Include="Config\Interfaces\IELFinderRootVolumeConfigEntry.cs" />
+    <Compile Include="Streams\IFileStream.cs" />
+    <Compile Include="Commands\Operations\Add\ConnectorUploadCommand.cs" />
+    <Compile Include="Commands\Operations\Common\ConnectorCommand.cs" />
+    <Compile Include="Commands\Operations\Common\ConnectorMultipleTargetsCommand.cs" />
+    <Compile Include="Commands\Operations\Common\ConnectorSingleTargetCommand.cs" />
+    <Compile Include="Commands\Operations\Common\ConnectorSingleTargetNameCommand.cs" />
+    <Compile Include="Commands\Operations\Image\Common\ConnectorImageCommand.cs" />
+    <Compile Include="Commands\Operations\Image\ConnectorCropImageCommand.cs" />
+    <Compile Include="Commands\Operations\Image\Thumbnails\ConnectorGetThumbnailCommand.cs" />
+    <Compile Include="Commands\Operations\Image\ConnectorResizeImageCommand.cs" />
+    <Compile Include="Commands\Operations\Image\ConnectorRotateImageCommand.cs" />
+    <Compile Include="Commands\Operations\Image\Thumbnails\ConnectorGenerateThumbnailsCommand.cs" />
+    <Compile Include="Commands\Results\Common\Errors\CommandErrorEnum.cs" />
+    <Compile Include="Commands\Operations\Common\Interfaces\IConnectorCommand.cs" />
+    <Compile Include="Commands\Operations\Replace\ConnectorPasteCommand.cs" />
+    <Compile Include="Commands\Operations\Search\ConnectorSearchCommand.cs" />
+    <Compile Include="Commands\Operations\Open\Common\ConnectorBaseOpenCommand.cs" />
+    <Compile Include="Commands\Operations\Add\ConnectorDuplicateCommand.cs" />
+    <Compile Include="Commands\Operations\Content\ConnectorFileCommand.cs" />
+    <Compile Include="Commands\Operations\Content\ConnectorGetCommand.cs" />
+    <Compile Include="Commands\Operations\Open\ConnectorInitCommand.cs" />
+    <Compile Include="Commands\Operations\Add\ConnectorMakeDirCommand.cs" />
+    <Compile Include="Commands\Operations\Add\ConnectorMakeFileCommand.cs" />
+    <Compile Include="Commands\Operations\Open\ConnectorOpenCommand.cs" />
+    <Compile Include="Commands\Operations\Tree\ConnectorParentsCommand.cs" />
+    <Compile Include="Commands\Operations\Change\ConnectorPutCommand.cs" />
+    <Compile Include="Commands\Operations\Remove\ConnectorRemoveCommand.cs" />
+    <Compile Include="Commands\Operations\Replace\ConnectorRenameCommand.cs" />
+    <Compile Include="Commands\Operations\Tree\ConnectorTreeCommand.cs" />
+    <Compile Include="Commands\Results\Add\Common\AddCommandResult.cs" />
+    <Compile Include="Commands\Results\Add\MakeDirCommandResult.cs" />
+    <Compile Include="Commands\Results\Add\MakeFileCommandResult.cs" />
+    <Compile Include="Commands\Results\Add\UploadCommandResult.cs" />
+    <Compile Include="Commands\Results\Change\Common\ChangeCommandResult.cs" />
+    <Compile Include="Commands\Results\Change\PutCommandResult.cs" />
+    <Compile Include="Commands\Results\Content\Common\BaseFileContentResult.cs" />
+    <Compile Include="Commands\Results\Content\FileCommandResult.cs" />
+    <Compile Include="Commands\Results\Content\GetCommandResult.cs" />
+    <Compile Include="Commands\Results\Add\DuplicateCommandResult.cs" />
+    <Compile Include="Commands\Results\Image\Common\ChangeImageResult.cs" />
+    <Compile Include="Commands\Results\Image\CropImageResult.cs" />
+    <Compile Include="Commands\Results\Image\ResizeImageResult.cs" />
+    <Compile Include="Commands\Results\Image\RotateImageResult.cs" />
+    <Compile Include="Commands\Results\Image\Thumbnails\GenerateThumbnailsResult.cs" />
+    <Compile Include="Commands\Results\Image\Thumbnails\GetThumbnailResult.cs" />
+    <Compile Include="Commands\Results\Remove\RemoveCommandResult.cs" />
+    <Compile Include="Commands\Results\Replace\PasteCommandResult.cs" />
+    <Compile Include="Commands\Results\Replace\RenameCommandResult.cs" />
+    <Compile Include="Commands\Results\Replace\Common\ReplaceCommandResult.cs" />
+    <Compile Include="Commands\Results\Search\SearchCommandResult.cs" />
+    <Compile Include="Commands\Results\Tree\ParentsCommandResult.cs" />
+    <Compile Include="Commands\Results\Tree\Common\TreeBaseCommandResult.cs" />
+    <Compile Include="Drivers\Common\Data\Extensions\VolumeExtensions.cs" />
+    <Compile Include="Drivers\Common\Data\Results\ThumbnailGeneratedResult.cs" />
+    <Compile Include="Drivers\Common\Data\Volumes\RootVolume.cs" />
+    <Compile Include="Drivers\Common\Data\Volumes\Info\VolumePathInfo.cs" />
+    <Compile Include="Drivers\Common\Interfaces\IConnectorDriver.cs" />
+    <Compile Include="Drivers\FileSystem\FileSystemConnectorDriver.cs" />
+    <Compile Include="Drivers\FileSystem\Constants\ConnectorFileSystemDriverConstants.cs" />
+    <Compile Include="Drivers\FileSystem\Extensions\FIleSystemInfoExtensions.cs" />
+    <Compile Include="Drivers\FileSystem\Extensions\FileSystemVolumeExtensions.cs" />
+    <Compile Include="Drivers\FileSystem\Models\Directories\Common\BaseDirectoryEntryObjectModel.cs" />
+    <Compile Include="Drivers\FileSystem\Models\Files\Common\BaseFileEntryObjectModel.cs" />
+    <Compile Include="Drivers\FileSystem\Volumes\FileSystemRootVolume.cs" />
+    <Compile Include="Drivers\FileSystem\Volumes\Info\Extensions\FileSystemVolumePathInfoExtensions.cs" />
+    <Compile Include="Drivers\FileSystem\Volumes\Info\FileSystemVolumeDirectoryInfo.cs" />
+    <Compile Include="Drivers\FileSystem\Volumes\Info\FileSystemVolumeFileInfo.cs" />
+    <Compile Include="Drivers\FileSystem\Volumes\Info\FileSystemVolumePathInfo.cs" />
+    <Compile Include="Drivers\FileSystem\Models\Directories\RootDirectoryEntryObjectModel.cs" />
+    <Compile Include="Drivers\FileSystem\Utils\FileSystemUtils.cs" />
+    <Compile Include="Exceptions\ELFinderConnectorException.cs" />
+    <Compile Include="Exceptions\ELFinderNewNameSelectionException.cs" />
+    <Compile Include="Exceptions\ELFinderNoVolumesDefinedException.cs" />
+    <Compile Include="Exceptions\ELFinderParentDirectoryNotFoundException.cs" />
+    <Compile Include="Exceptions\ELFinderTargetDirectoryNotFoundException.cs" />
+    <Compile Include="Exceptions\ELFinderTargetException.cs" />
+    <Compile Include="Exceptions\ELFinderTargetFileNotFoundException.cs" />
+    <Compile Include="Exceptions\ELFinderVolumeNotFoundException.cs" />
+    <Compile Include="Exceptions\ELFinderTargetNotFoundException.cs" />
+    <Compile Include="Drivers\FileSystem\Models\Directories\DirectoryEntryObjectModel.cs" />
+    <Compile Include="Drivers\Common\Data\Models\EntryObjectModel.cs" />
+    <Compile Include="Drivers\FileSystem\Models\Files\FileEntryObjectModel.cs" />
+    <Compile Include="Drivers\FileSystem\Models\Files\ImageEntryObjectModel.cs" />
+    <Compile Include="Extensions\FileStreamExtensions.cs" />
+    <Compile Include="Extensions\StringExtensions.cs" />
+    <Compile Include="Extensions\TypeExtensions.cs" />
+    <Compile Include="ImageProcessor\Helpers\Extensions\EnumExtensions.cs" />
+    <Compile Include="ImageProcessor\Helpers\Extensions\ImageExtensions.cs" />
+    <Compile Include="ImageProcessor\Helpers\Extensions\StringExtensions.cs" />
+    <Compile Include="ImageProcessor\ImageFactory.cs" />
+    <Compile Include="ImageProcessor\Imaging\ColorQuantizer.cs" />
+    <Compile Include="ImageProcessor\Imaging\Filters\BlackWhiteMatrixFilter.cs" />
+    <Compile Include="ImageProcessor\Imaging\Filters\ColorMatrixes.cs" />
+    <Compile Include="ImageProcessor\Imaging\Filters\ComicMatrixFilter.cs" />
+    <Compile Include="ImageProcessor\Imaging\Filters\GothamMatrixFilter.cs" />
+    <Compile Include="ImageProcessor\Imaging\Filters\GreyScaleMatrixFilter.cs" />
+    <Compile Include="ImageProcessor\Imaging\Filters\HiSatchMatrixFilter.cs" />
+    <Compile Include="ImageProcessor\Imaging\Filters\IMatrixFilter.cs" />
+    <Compile Include="ImageProcessor\Imaging\Filters\InvertMatrixFilter.cs" />
+    <Compile Include="ImageProcessor\Imaging\Filters\LomographMatrixFilter.cs" />
+    <Compile Include="ImageProcessor\Imaging\Filters\LoSatchMatrixFilter.cs" />
+    <Compile Include="ImageProcessor\Imaging\Filters\PolaroidMatrixFilter.cs" />
+    <Compile Include="ImageProcessor\Imaging\Filters\SepiaMatrixFilter.cs" />
+    <Compile Include="ImageProcessor\Imaging\ImageUtils.cs" />
+    <Compile Include="ImageProcessor\Imaging\ResponseType.cs" />
+    <Compile Include="ImageProcessor\Imaging\RotateLayer.cs" />
+    <Compile Include="ImageProcessor\Imaging\RoundedCornerLayer.cs" />
+    <Compile Include="ImageProcessor\Imaging\TextLayer.cs" />
+    <Compile Include="ImageProcessor\Processors\Alpha.cs" />
+    <Compile Include="ImageProcessor\Processors\Brightness.cs" />
+    <Compile Include="ImageProcessor\Processors\Contrast.cs" />
+    <Compile Include="ImageProcessor\Processors\Crop.cs" />
+    <Compile Include="ImageProcessor\Processors\Filter.cs" />
+    <Compile Include="ImageProcessor\Processors\Flip.cs" />
+    <Compile Include="ImageProcessor\Processors\Format.cs" />
+    <Compile Include="ImageProcessor\Processors\IGraphicsProcessor.cs" />
+    <Compile Include="ImageProcessor\Processors\Quality.cs" />
+    <Compile Include="ImageProcessor\Processors\Resize.cs" />
+    <Compile Include="ImageProcessor\Processors\Rotate.cs" />
+    <Compile Include="ImageProcessor\Processors\RoundedCorners.cs" />
+    <Compile Include="ImageProcessor\Processors\Saturate.cs" />
+    <Compile Include="ImageProcessor\Processors\Vignette.cs" />
+    <Compile Include="ImageProcessor\Processors\Watermark.cs" />
+    <Compile Include="Utils\ImagingUtils.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Commands\Results\Common\Data\ArchiveResultData.cs" />
+    <Compile Include="Commands\Results\Common\CommandResult.cs" />
+    <Compile Include="Commands\Results\Common\Data\DebugResultData.cs" />
+    <Compile Include="Commands\Results\Open\Common\OpenBaseCommandResult.cs" />
+    <Compile Include="Commands\Results\Open\OpenCommandResult.cs" />
+    <Compile Include="Commands\Results\Open\InitCommandResult.cs" />
+    <Compile Include="Commands\Results\Common\Data\OptionsResultData.cs" />
+    <Compile Include="Commands\Results\Tree\TreeCommandResult.cs" />
+    <Compile Include="Utils\MimeTypes.cs" />
+    <Compile Include="Web\Extensions\WebFileCommandResultExtensions.cs" />
+    <Compile Include="Web\Serialization\ELFinderResponseContractResolver.cs" />
+    <Compile Include="Web\Serialization\Values\ELFinderResponseBooleanValueConverter.cs" />
+    <Compile Include="Web\Serialization\Values\ELFinderResponseThumbnailValueConverter.cs" />
+    <Compile Include="Utils\UrlPathUtils.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

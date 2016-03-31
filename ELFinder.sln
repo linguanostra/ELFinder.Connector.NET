@@ -1,0 +1,68 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ELFinder.Connector", "Core\ELFinder.Connector\ELFinder.Connector.csproj", "{0C1E3DE2-1858-4EA5-9B95-35648AD24C79}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ELFinder.Connector.Nancy", "Nancy\ELFinder.Connector.Nancy\ELFinder.Connector.Nancy.csproj", "{3919146C-66F1-4C94-9A90-D488D7BEC974}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ELFinder.WebServer.Nancy", "Nancy\ELFinder.WebServer.Nancy\ELFinder.WebServer.Nancy.csproj", "{A5497585-A3C2-41D1-9684-60CCE39B7F41}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ELFinder.Connector.Tests", "Tests\ELFinder.Connector.Tests\ELFinder.Connector.Tests.csproj", "{53E46206-9C68-4A41-B599-84E45AF994CC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{C311804C-8711-457D-B361-AC7A81AA2F47}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Nancy", "Nancy", "{613712D9-8882-4E03-B942-EDB38ABA7F45}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ASPNet", "ASPNet", "{D8424DA7-BD05-4274-A9D3-4E003A592CCD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{8ECE79CC-3931-4F1D-8253-06FA3AD009EE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ELFinder.Connector.ASPNet", "ASP.NET\ELFinder.Connector.ASPNet\ELFinder.Connector.ASPNet.csproj", "{41524E2B-443D-4B45-97E2-527DA84B5C80}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ELFinder.WebServer.ASPNet", "ASP.NET\ELFinder.WebServer.ASPNet\ELFinder.WebServer.ASPNet.csproj", "{0F03C8EC-2F63-4958-9B9D-385FA66ABE19}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0C1E3DE2-1858-4EA5-9B95-35648AD24C79}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0C1E3DE2-1858-4EA5-9B95-35648AD24C79}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0C1E3DE2-1858-4EA5-9B95-35648AD24C79}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0C1E3DE2-1858-4EA5-9B95-35648AD24C79}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3919146C-66F1-4C94-9A90-D488D7BEC974}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3919146C-66F1-4C94-9A90-D488D7BEC974}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3919146C-66F1-4C94-9A90-D488D7BEC974}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3919146C-66F1-4C94-9A90-D488D7BEC974}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A5497585-A3C2-41D1-9684-60CCE39B7F41}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A5497585-A3C2-41D1-9684-60CCE39B7F41}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A5497585-A3C2-41D1-9684-60CCE39B7F41}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A5497585-A3C2-41D1-9684-60CCE39B7F41}.Release|Any CPU.Build.0 = Release|Any CPU
+		{53E46206-9C68-4A41-B599-84E45AF994CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{53E46206-9C68-4A41-B599-84E45AF994CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{53E46206-9C68-4A41-B599-84E45AF994CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{53E46206-9C68-4A41-B599-84E45AF994CC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{41524E2B-443D-4B45-97E2-527DA84B5C80}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{41524E2B-443D-4B45-97E2-527DA84B5C80}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{41524E2B-443D-4B45-97E2-527DA84B5C80}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{41524E2B-443D-4B45-97E2-527DA84B5C80}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0F03C8EC-2F63-4958-9B9D-385FA66ABE19}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0F03C8EC-2F63-4958-9B9D-385FA66ABE19}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0F03C8EC-2F63-4958-9B9D-385FA66ABE19}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0F03C8EC-2F63-4958-9B9D-385FA66ABE19}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{0C1E3DE2-1858-4EA5-9B95-35648AD24C79} = {C311804C-8711-457D-B361-AC7A81AA2F47}
+		{3919146C-66F1-4C94-9A90-D488D7BEC974} = {613712D9-8882-4E03-B942-EDB38ABA7F45}
+		{A5497585-A3C2-41D1-9684-60CCE39B7F41} = {613712D9-8882-4E03-B942-EDB38ABA7F45}
+		{53E46206-9C68-4A41-B599-84E45AF994CC} = {8ECE79CC-3931-4F1D-8253-06FA3AD009EE}
+		{41524E2B-443D-4B45-97E2-527DA84B5C80} = {D8424DA7-BD05-4274-A9D3-4E003A592CCD}
+		{0F03C8EC-2F63-4958-9B9D-385FA66ABE19} = {D8424DA7-BD05-4274-A9D3-4E003A592CCD}
+	EndGlobalSection
+EndGlobal
