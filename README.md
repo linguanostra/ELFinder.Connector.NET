@@ -17,7 +17,7 @@ Contents
 * [Getting started](#getting)
 * [Deployment](#deployment)
 * [FAQs](#faqs)
-* [TODO](#TODO)
+* [TODO](#todo)
 * [Support](#support)
 * [Author](#author)
 * [Acknowledgments](#acknowledgments)
