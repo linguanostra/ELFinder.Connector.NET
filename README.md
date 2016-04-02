@@ -113,8 +113,8 @@ Eventually
 ### Who's the cat in sample files?
 That Wasabi, my 2 years old adorable [Exotic Shorthair](https://en.wikipedia.org/wiki/Exotic_Shorthair)
 
- TODO
- -------
+TODO
+-------
 
 * More tests
 * Complete errors handling (including parameters validation) conforming to [API specs](https://github.com/Studio-42/elFinder/wiki/Client-Server-API-2.0#errors)
