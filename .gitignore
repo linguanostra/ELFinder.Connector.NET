@@ -10,4 +10,5 @@ _*
 **/.vs
 **/bin/*
 **/obj/*
+.tmb_Files/
 **/.tmb_Files/*
