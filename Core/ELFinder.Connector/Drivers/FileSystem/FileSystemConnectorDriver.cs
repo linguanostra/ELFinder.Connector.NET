@@ -28,10 +28,9 @@ using ELFinder.Connector.Drivers.FileSystem.Volumes.Info;
 using ELFinder.Connector.Drivers.FileSystem.Volumes.Info.Extensions;
 using ELFinder.Connector.Exceptions;
 using ELFinder.Connector.Extensions;
-using ELFinder.Connector.ImageProcessor;
-using ELFinder.Connector.ImageProcessor.Imaging;
 using ELFinder.Connector.Streams;
 using ELFinder.Connector.Utils;
+using ImageProcessor;
 
 namespace ELFinder.Connector.Drivers.FileSystem
 {
@@ -1129,7 +1128,7 @@ namespace ELFinder.Connector.Drivers.FileSystem
 
                 // Load, rotate and save an image.
                 imageFactory.Load(path.Info.FullName)
-                    .Rotate(new RotateLayer(angle))
+                    .Rotate(angle)
                     .Save(path.Info.FullName);
 
             }

@@ -30,6 +30,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ImageProcessor, Version=2.3.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\ImageProcessor.2.3.3.0\lib\net40\ImageProcessor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Newtonsoft.Json.7.0.1\lib\net40\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
@@ -138,43 +142,6 @@
     <Compile Include="Extensions\FileStreamExtensions.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="Extensions\TypeExtensions.cs" />
-    <Compile Include="ImageProcessor\Helpers\Extensions\EnumExtensions.cs" />
-    <Compile Include="ImageProcessor\Helpers\Extensions\ImageExtensions.cs" />
-    <Compile Include="ImageProcessor\Helpers\Extensions\StringExtensions.cs" />
-    <Compile Include="ImageProcessor\ImageFactory.cs" />
-    <Compile Include="ImageProcessor\Imaging\ColorQuantizer.cs" />
-    <Compile Include="ImageProcessor\Imaging\Filters\BlackWhiteMatrixFilter.cs" />
-    <Compile Include="ImageProcessor\Imaging\Filters\ColorMatrixes.cs" />
-    <Compile Include="ImageProcessor\Imaging\Filters\ComicMatrixFilter.cs" />
-    <Compile Include="ImageProcessor\Imaging\Filters\GothamMatrixFilter.cs" />
-    <Compile Include="ImageProcessor\Imaging\Filters\GreyScaleMatrixFilter.cs" />
-    <Compile Include="ImageProcessor\Imaging\Filters\HiSatchMatrixFilter.cs" />
-    <Compile Include="ImageProcessor\Imaging\Filters\IMatrixFilter.cs" />
-    <Compile Include="ImageProcessor\Imaging\Filters\InvertMatrixFilter.cs" />
-    <Compile Include="ImageProcessor\Imaging\Filters\LomographMatrixFilter.cs" />
-    <Compile Include="ImageProcessor\Imaging\Filters\LoSatchMatrixFilter.cs" />
-    <Compile Include="ImageProcessor\Imaging\Filters\PolaroidMatrixFilter.cs" />
-    <Compile Include="ImageProcessor\Imaging\Filters\SepiaMatrixFilter.cs" />
-    <Compile Include="ImageProcessor\Imaging\ImageUtils.cs" />
-    <Compile Include="ImageProcessor\Imaging\ResponseType.cs" />
-    <Compile Include="ImageProcessor\Imaging\RotateLayer.cs" />
-    <Compile Include="ImageProcessor\Imaging\RoundedCornerLayer.cs" />
-    <Compile Include="ImageProcessor\Imaging\TextLayer.cs" />
-    <Compile Include="ImageProcessor\Processors\Alpha.cs" />
-    <Compile Include="ImageProcessor\Processors\Brightness.cs" />
-    <Compile Include="ImageProcessor\Processors\Contrast.cs" />
-    <Compile Include="ImageProcessor\Processors\Crop.cs" />
-    <Compile Include="ImageProcessor\Processors\Filter.cs" />
-    <Compile Include="ImageProcessor\Processors\Flip.cs" />
-    <Compile Include="ImageProcessor\Processors\Format.cs" />
-    <Compile Include="ImageProcessor\Processors\IGraphicsProcessor.cs" />
-    <Compile Include="ImageProcessor\Processors\Quality.cs" />
-    <Compile Include="ImageProcessor\Processors\Resize.cs" />
-    <Compile Include="ImageProcessor\Processors\Rotate.cs" />
-    <Compile Include="ImageProcessor\Processors\RoundedCorners.cs" />
-    <Compile Include="ImageProcessor\Processors\Saturate.cs" />
-    <Compile Include="ImageProcessor\Processors\Vignette.cs" />
-    <Compile Include="ImageProcessor\Processors\Watermark.cs" />
     <Compile Include="Utils\ImagingUtils.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Commands\Results\Common\Data\ArchiveResultData.cs" />
