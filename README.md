@@ -14,7 +14,7 @@ Contents
 * [Supported features](#features)
 * [Missing features](#missing)
 * [Requirements](#requirements)
-* [Getting started](#getting)
+* [Getting started](#getting started)
 * [Deployment](#deployment)
 * [FAQs](#faqs)
 * [TODO](#todo)
@@ -96,6 +96,7 @@ Getting started
  2. Create a controller that inherits from ELFinderBaseConnectorController .
 
  3. Refer to the ELFinder.WebServer.ASPNet project for help with usage.
+
 
  ##### NancyFX
 
