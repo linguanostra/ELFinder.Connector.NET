@@ -26,7 +26,7 @@ namespace ELFinder.Connector.ASPNet.Config
 
             config.RootVolumes.Add(
                 new ELFinderRootVolumeConfigEntry(
-                    HostingEnvironment.MapPath("~/App_Data/Files"),
+                    HostingEnvironment.MapPath("~/App_Data"),
                     isLocked: false,
                     isReadOnly: false,
                     isShowOnly: false,

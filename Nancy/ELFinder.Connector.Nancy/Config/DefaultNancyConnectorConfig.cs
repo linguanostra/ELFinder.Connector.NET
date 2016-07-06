@@ -21,13 +21,13 @@ namespace ELFinder.Connector.Nancy.Config
         {
 
             var config = new ELFinderConfig(
-                Path.Combine(Environment.CurrentDirectory, @"Data\Thumbnails"),
+                Environment.CurrentDirectory,
                 thumbnailsUrl: "Thumbnails/"
                 );
 
             config.RootVolumes.Add(
                 new ELFinderRootVolumeConfigEntry(
-                    Path.Combine(Environment.CurrentDirectory, @"Data\Files"),
+                    Environment.CurrentDirectory,
                     isLocked: false,
                     isReadOnly: false,
                     isShowOnly: false,
