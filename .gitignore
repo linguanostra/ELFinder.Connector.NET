@@ -12,3 +12,4 @@ _*
 **/obj/*
 .tmb_Files/
 **/.tmb_Files/*
+/ASP.NET/ELFinder.WebServer.ASPNet/ELFinder.WebServer.ASPNet.csproj.user
