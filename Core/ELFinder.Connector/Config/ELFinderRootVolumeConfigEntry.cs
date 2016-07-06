@@ -48,7 +48,7 @@ namespace ELFinder.Connector.Config
         /// <summary>
         /// Max upload size in kilobytes
         /// </summary>
-        public int MaxUploadSizeKb { get; }
+        public int? MaxUploadSizeKb { get; }
 
         #endregion
 
@@ -66,7 +66,7 @@ namespace ELFinder.Connector.Config
         /// <param name="maxUploadSizeKb">Max upload size in kilobytes</param>        
         /// <param name="startDirectory">Start directory</param>
         public ELFinderRootVolumeConfigEntry(string directory, string url = null, bool isLocked = false, bool isReadOnly = false,
-            bool isShowOnly = false, bool uploadOverwrite = false, int maxUploadSizeKb = 0, string startDirectory = null)
+            bool isShowOnly = false, bool uploadOverwrite = false, int? maxUploadSizeKb = null, string startDirectory = null)
         {
             Directory = directory?.TrimEnd('/');
             Url = url;

@@ -45,9 +45,9 @@
         bool UploadOverwrite { get; }
 
         /// <summary>
-        /// Max upload size in kilobytes
+        /// Max upload size in kilobytes. 
         /// </summary>
-        int MaxUploadSizeKb { get; }
+        int? MaxUploadSizeKb { get; }
 
         #endregion
 

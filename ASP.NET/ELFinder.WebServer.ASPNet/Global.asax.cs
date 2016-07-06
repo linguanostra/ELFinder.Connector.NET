@@ -51,7 +51,7 @@ namespace ELFinder.WebServer.ASPNet
                     isLocked: false,
                     isReadOnly: false,
                     isShowOnly: false,
-                    maxUploadSizeKb: 0,
+                    maxUploadSizeKb: 5,      // null = Unlimited upload size
                     uploadOverwrite: true,
                     startDirectory: ""));
 

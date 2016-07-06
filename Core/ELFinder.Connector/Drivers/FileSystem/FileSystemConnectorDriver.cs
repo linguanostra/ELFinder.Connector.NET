@@ -14,7 +14,6 @@ using ELFinder.Connector.Commands.Results.Remove;
 using ELFinder.Connector.Commands.Results.Replace;
 using ELFinder.Connector.Commands.Results.Search;
 using ELFinder.Connector.Commands.Results.Tree;
-using ELFinder.Connector.Config;
 using ELFinder.Connector.Config.Interfaces;
 using ELFinder.Connector.Drivers.Common.Data.Extensions;
 using ELFinder.Connector.Drivers.Common.Interfaces;
@@ -993,7 +992,7 @@ namespace ELFinder.Connector.Drivers.FileSystem
 
             // Check if max upload size is set and that no files exceeds it            
             if (dest.Root.MaxUploadSizeKb.HasValue
-                && !fileStreams.Any(x => (x.Stream.Length/1024) > dest.Root.MaxUploadSizeKb))
+                && fileStreams.Any(x => (x.Stream.Length/1024) > dest.Root.MaxUploadSizeKb))
             {
 
                 // Max upload size exceeded

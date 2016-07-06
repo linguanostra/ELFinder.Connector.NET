@@ -1,9 +1,7 @@
-﻿using ELFinder.Connector.Commands.Results.Common;
-using ELFinder.Connector.Drivers.Common.Interfaces;
+﻿using ELFinder.Connector.Drivers.Common.Interfaces;
 using ELFinder.Connector.Drivers.FileSystem;
 using ELFinder.Connector.Tests.Config;
 using ELFinder.Connector.Tests.Connector.Common;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace ELFinder.Connector.Tests.Connector.FileSystem.Common
 {

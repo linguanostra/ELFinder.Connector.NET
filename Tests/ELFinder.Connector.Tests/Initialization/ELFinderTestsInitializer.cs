@@ -60,7 +60,7 @@ namespace ELFinder.Connector.Tests.Initialization
                     isLocked: false,
                     isReadOnly: false,
                     isShowOnly: false,
-                    maxUploadSizeKb: 0,
+                    maxUploadSizeKb: null,      // null = Unlimited upload size
                     uploadOverwrite: true,
                     startDirectory: ""));
 
