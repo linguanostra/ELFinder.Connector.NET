@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using System.Web.Hosting;
+using System.Web.Mvc;
 using System.Web.Routing;
 using ELFinder.Connector.ASPNet.ModelBinders;
 using ELFinder.Connector.Config;
@@ -51,7 +52,7 @@ namespace ELFinder.WebServer.ASPNet
                     isLocked: false,
                     isReadOnly: false,
                     isShowOnly: false,
-                    maxUploadSizeKb: 5,      // null = Unlimited upload size
+                    maxUploadSizeKb: null,      // null = Unlimited upload size
                     uploadOverwrite: true,
                     startDirectory: ""));
 

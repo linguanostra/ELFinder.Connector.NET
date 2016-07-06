@@ -57,8 +57,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bootstrap\ELFinderBaseNancyBootstrapper.cs" />
+    <Compile Include="Config\DefaultNancyConnectorConfig.cs" />
     <Compile Include="Converters\ELFinderBooleanValueConverter.cs" />
     <Compile Include="Converters\ELFinderFieldNameConverter.cs" />
+    <Compile Include="Modules\ELFinderBaseConnectorModule.cs" />
     <Compile Include="Streams\HttpFileStream.cs" />
     <Compile Include="Extensions\NancyRequestExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

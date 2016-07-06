@@ -53,6 +53,8 @@ Solution `ELFinder.sln` was made with Visual Studio 2015. It's Nuget-enabled, th
 Getting started
 ------------
 
+### From source
+
 ##### Core
 
  1. Clone this repository
@@ -80,6 +82,31 @@ Getting started
 1. Set `ELFinder.WebServer.Nancy` as your startup project
 
 2. Edit method `InitELFinderConfiguration` in `Program.cs` to customize configuration
+
+### From Nuget
+
+##### ASP.NET MVC
+
+ 1. Install connector Nuget package for ASP.NET MVC using this command:
+
+ ```
+ $ Install-Package ELFinder.Connector.ASPNet
+ ```
+
+ 2. Create a controller that inherits from ELFinderBaseConnectorController .
+
+ 3. Refer to the ELFinder.WebServer.ASPNet project for help with usage.
+
+ ##### NancyFX
+
+  1. Install connector Nuget package for NancyFX using this command:
+
+  ```
+  $ Install-Package ELFinder.Connector.Nancy
+  ```
+  2. Create a module that inherits from ELFinderBaseConnectorModule .
+
+  3. Refer to the ELFinder.WebServer.Nancy project for help with usage.
 
 Deployment
 ------------

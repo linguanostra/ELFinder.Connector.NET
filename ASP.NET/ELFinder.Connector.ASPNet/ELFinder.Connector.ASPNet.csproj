@@ -88,6 +88,8 @@
     <Compile Include="ActionResults\Files\Common\ELFinderContentCommandStreamResult.cs" />
     <Compile Include="ActionResults\Files\ELFinderFileDownloadResult.cs" />
     <Compile Include="ActionResults\Files\ELFinderGetThumbnailResult.cs" />
+    <Compile Include="Config\DefaultASPNetConnectorConfig.cs" />
+    <Compile Include="Controllers\ELFinderBaseConnectorController.cs" />
     <Compile Include="Extensions\HttpRequestExtensions.cs" />
     <Compile Include="Helpers\HttpCacheHelper.cs" />
     <Compile Include="ModelBinders\ELFinderModelBinder.cs" />
