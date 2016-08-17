@@ -24,6 +24,8 @@ namespace ELFinder.Connector.ASPNet.Controllers
 
     /// <summary>
     /// ELFinder connector controller
+    /// IMPORTANT: If you use this controller in your existing application, make sure to register the custom ELFinder model binder (ELFinderModelBinder) with ASP.NET MVC.
+    ///            Look at the Application_Start() method in Global.asax.cs on how to do so.
     /// </summary>
     public abstract class ELFinderBaseConnectorController : Controller
     {
