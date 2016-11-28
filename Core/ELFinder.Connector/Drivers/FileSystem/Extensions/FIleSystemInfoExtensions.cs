@@ -19,9 +19,14 @@ namespace ELFinder.Connector.Drivers.FileSystem.Extensions
         /// <returns>Result directories</returns>
         public static FileInfo[] GetVisibleFiles(this DirectoryInfo info)
         {
-            
-            return info.GetFiles().Where(x => !x.IsHidden()).ToArray();
-
+            try
+            {
+                return info.GetFiles().Where(x => !x.IsHidden()).ToArray();
+            }
+            catch (System.Exception)
+            {
+                return new FileInfo[0];
+            }
         }
 
         /// <summary>
@@ -31,7 +36,14 @@ namespace ELFinder.Connector.Drivers.FileSystem.Extensions
         /// <returns>Result directories</returns>
         public static DirectoryInfo[] GetVisibleDirectories(this DirectoryInfo info)
         {
-            return info.GetDirectories().Where(x => !x.IsHidden()).ToArray();
+            try
+            {
+                return info.GetDirectories().Where(x => !x.IsHidden()).ToArray();
+            }
+            catch (System.Exception)
+            {
+                return new DirectoryInfo[0];
+            }
         }
 
         /// <summary>
