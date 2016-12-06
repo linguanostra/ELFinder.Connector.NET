@@ -76,6 +76,12 @@ Getting started
  1. Set `ELFinder.WebServer.ASPNet` as your startup project
 
  2. Edit method `InitELFinderConfiguration` in `Global.asax.cs` to customize configuration
+ 
+##### ASP.NET MVC Core
+
+ 1. Set `ELFinder.WebServer.ASPNet` as your startup project
+
+ 2. Edit method `InitELFinderConfiguration` in `Startup.cs` to customize configuration
 
 ##### NancyFX
 
@@ -96,9 +102,22 @@ Getting started
  2. Create a controller that inherits from ELFinderBaseConnectorController .
 
  3. Refer to the ELFinder.WebServer.ASPNet project for help with usage.
+ 
 
+##### ASP.NET MVC Core
 
- ##### NancyFX
+ 1. Install connector Nuget package for ASP.NET MVC using this command:
+
+ ```
+ $ Install-Package ELFinder.Connector.ASPNetCore
+ ```
+
+ 2. Create a controller that inherits from ELFinderBaseConnectorController .
+
+ 3. Refer to the ELFinder.WebServer.ASPNetCore project for help with usage.
+ 
+
+##### NancyFX
 
   1. Install connector Nuget package for NancyFX using this command:
 
@@ -121,6 +140,10 @@ The project/library `ELFinder.Connector`
 ##### ASP.NET MVC
 
 The project/library `ELFinder.Connector.ASPNet`
+
+##### ASP.NET MVC Core
+
+The project/library `ELFinder.Connector.ASPNetCore`
 
 ##### NancyFX
 
