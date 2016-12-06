@@ -1,7 +1,7 @@
-﻿using System.Web.Hosting;
-using ELFinder.Connector.Config;
+﻿using ELFinder.Connector.Config;
+using System.IO;
 
-namespace ELFinder.Connector.ASPNet.Config
+namespace ELFinder.Connector.ASPNetCore.Config
 {
 
     /// <summary>
@@ -20,13 +20,14 @@ namespace ELFinder.Connector.ASPNet.Config
         {
 
             var config = new ELFinderConfig(
-                HostingEnvironment.MapPath("~/App_Data"),
+                Directory.GetCurrentDirectory() + @"\App_Data",
+                //HostingEnvironment.MapPath("~/App_Data"),
                 thumbnailsUrl: "Thumbnails/"
                 );
 
             config.RootVolumes.Add(
                 new ELFinderRootVolumeConfigEntry(
-                    HostingEnvironment.MapPath("~/App_Data"),
+                    Directory.GetCurrentDirectory() + @"~\App_Data",
                     isLocked: false,
                     isReadOnly: false,
                     isShowOnly: false,

@@ -1,6 +1,7 @@
-﻿using System.Web;
+﻿using Microsoft.AspNetCore.Http;
+using System.Linq;
 
-namespace ELFinder.Connector.ASPNet.Extensions
+namespace ELFinder.Connector.ASPNetCore.Extensions
 {
 
     /// <summary>
@@ -16,7 +17,7 @@ namespace ELFinder.Connector.ASPNet.Extensions
         /// </summary>
         /// <param name="request">Request</param>
         /// <returns>True/False, based on result</returns>
-        public static bool IsFromMSIE(this HttpRequestBase request)
+        public static bool IsFromMSIE(this HttpRequest request)
         {
 
             return request.Headers["User-Agent"].Contains("MSIE");

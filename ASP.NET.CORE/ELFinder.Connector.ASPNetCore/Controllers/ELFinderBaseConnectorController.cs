@@ -1,10 +1,7 @@
-﻿using System;
-using System.Linq;
-using System.Web.Mvc;
-using ELFinder.Connector.ASPNet.ActionResults.Data;
-using ELFinder.Connector.ASPNet.ActionResults.Files;
-using ELFinder.Connector.ASPNet.Config;
-using ELFinder.Connector.ASPNet.Streams;
+﻿using ELFinder.Connector.ASPNetCore.ActionResults.Data;
+using ELFinder.Connector.ASPNetCore.ActionResults.Files;
+using ELFinder.Connector.ASPNetCore.Config;
+using ELFinder.Connector.ASPNetCore.Streams;
 using ELFinder.Connector.Commands.Operations.Add;
 using ELFinder.Connector.Commands.Operations.Change;
 using ELFinder.Connector.Commands.Operations.Common.Interfaces;
@@ -18,8 +15,11 @@ using ELFinder.Connector.Commands.Operations.Search;
 using ELFinder.Connector.Commands.Operations.Tree;
 using ELFinder.Connector.Config.Interfaces;
 using ELFinder.Connector.Drivers.FileSystem;
+using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Linq;
 
-namespace ELFinder.Connector.ASPNet.Controllers
+namespace ELFinder.Connector.ASPNetCore.Controllers
 {
 
     /// <summary>
@@ -31,6 +31,7 @@ namespace ELFinder.Connector.ASPNet.Controllers
     {
 
         #region Properties
+        
 
         /// <summary>
         /// Driver
@@ -72,19 +73,19 @@ namespace ELFinder.Connector.ASPNet.Controllers
         /// </summary>
         /// <param name="cmd">Command</param>
         /// <returns>Result</returns>
-        public virtual ActionResult Main(string cmd)
+        public virtual IActionResult Main(string cmd)
         {
 
             // Dispatch command
 
             // Init
-            if (cmd == "open" && Request.QueryString["init"] == "1")
+            if (cmd == "open" && Request.Query["init"] == "1")
             {
                 return DispatchCommand<ConnectorInitCommand>();
             }
 
             // Open
-            if (cmd == "open" && Request.QueryString["init"] != "1")
+            if (cmd == "open" && Request.Query["init"] != "1")
             {
                 return DispatchCommand<ConnectorOpenCommand>();
             }
@@ -168,19 +169,19 @@ namespace ELFinder.Connector.ASPNet.Controllers
             }
 
             // Resize image
-            if (cmd == "resize" && Request.QueryString["mode"] == "resize")
+            if (cmd == "resize" && Request.Query["mode"] == "resize")
             {
                 return DispatchCommand<ConnectorResizeImageCommand>();
             }
 
             // Rotate image
-            if (cmd == "resize" && Request.QueryString["mode"] == "rotate")
+            if (cmd == "resize" && Request.Query["mode"] == "rotate")
             {
                 return DispatchCommand<ConnectorRotateImageCommand>();
             }
 
             // Crop image
-            if (cmd == "resize" && Request.QueryString["mode"] == "crop")
+            if (cmd == "resize" && Request.Query["mode"] == "crop")
             {
                 return DispatchCommand<ConnectorCropImageCommand>();
             }
@@ -192,7 +193,7 @@ namespace ELFinder.Connector.ASPNet.Controllers
             }
 
             // Command not found
-            return new HttpNotFoundResult();
+            return new NotFoundResult();
 
         }
 
@@ -241,14 +242,22 @@ namespace ELFinder.Connector.ASPNet.Controllers
             var command = new TCommand();
 
             // Bind it (Don't care about validation exceptions)
-            TryUpdateModel(command);
+            TryUpdateModelAsync(command);
+
 
             // Set driver
             command.Driver = Driver;
 
-            // Assign files
-            command.Files = Request.Files.AllKeys.Select(x => new HttpFileStream(Request.Files.Get(x)));
 
+            // Assign files
+            //TODO: ASSIGN FILES
+            if (Request.Method =="POST")
+            {
+                command.Files = Request.Form.Files.Select(x => new HttpFileStream(x));
+            }
+           
+            //command.Files = Request.Files.AllKeys.Select(x => new HttpFileStream(Request.Files.Get(x)));
+            
             // Execute it
             return executeCommandHandler(command);
 

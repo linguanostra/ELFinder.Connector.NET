@@ -1,11 +1,12 @@
-﻿using System.Web;
-using System.Web.Mvc;
-using ELFinder.Connector.ASPNet.ActionResults.Files.Common;
-using ELFinder.Connector.ASPNet.Extensions;
+﻿using ELFinder.Connector.ASPNetCore.ActionResults.Files.Common;
+using ELFinder.Connector.ASPNetCore.Extensions;
 using ELFinder.Connector.Commands.Results.Content;
 using ELFinder.Connector.Web.Extensions;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using System.Net;
 
-namespace ELFinder.Connector.ASPNet.ActionResults.Files
+namespace ELFinder.Connector.ASPNetCore.ActionResults.Files
 {
 
     /// <summary>
@@ -34,14 +35,15 @@ namespace ELFinder.Connector.ASPNet.ActionResults.Files
         /// </summary>
         /// <param name="context">Controller context</param>
         /// <param name="response">Response</param>
-        protected override void SetContentHeaders(ControllerContext context, HttpResponseBase response)
+        protected override void SetContentHeaders(ActionContext context, HttpResponse response)
         {
 
             // Call base method
             base.SetContentHeaders(context, response);
 
             // Encode file name
-            var encodedFileName = HttpUtility.UrlEncode(CommandResult.File.Name);
+            //var encodedFileName = HttpUtility.UrlEncode(CommandResult.File.Name);
+            var encodedFileName = WebUtility.UrlEncode(CommandResult.File.Name);
 
             // Compute file name disposition value
             // IE < 9 does not support RFC 6266 (RFC 2231/RFC 5987)

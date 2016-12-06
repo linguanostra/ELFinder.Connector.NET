@@ -1,11 +1,12 @@
-﻿using System;
+﻿using ELFinder.Connector.Drivers.FileSystem.Utils;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Globalization;
 using System.IO;
-using System.Web;
-using System.Web.Mvc;
-using ELFinder.Connector.Drivers.FileSystem.Utils;
+using System.Linq;
 
-namespace ELFinder.Connector.ASPNet.Helpers
+namespace ELFinder.Connector.ASPNetCore.Helpers
 {
 
     /// <summary>
@@ -24,23 +25,23 @@ namespace ELFinder.Connector.ASPNet.Helpers
         /// <param name="lastModified">Current resource last modified, or null</param>
         /// <param name="context">Current controller context</param>
         /// <returns>True if not modified should be sent, false otherwise</returns>
-        public static bool ReturnNotModified(string etag, DateTime? lastModified, ControllerContext context)
+        public static bool ReturnNotModified(string etag, DateTime? lastModified, ActionContext context)
         {
 
             // Check context
-            if (context == null || context.RequestContext == null)
+            if (context == null || context.HttpContext.Request == null)
             {
                 return false;
             }
 
             // Get ETag header
-            var requestEtag = context.HttpContext.Request.Headers["If-None-Match"];
+            var requestEtag = context.HttpContext.Request.Headers ["If-None-Match"].ToList();
 
             // Get Last-Modified-Since header
             var requestDate = ParseDateTime(context.HttpContext.Request.Headers["If-Modified-Since"]);
 
             // Check if file ETag has changed
-            if (requestEtag != null && !string.IsNullOrEmpty(etag) && requestEtag.Equals(etag, StringComparison.Ordinal))
+            if (requestEtag != null && !string.IsNullOrEmpty(etag) && requestEtag.Contains(etag))
             {
                 return true;
             }
@@ -82,7 +83,7 @@ namespace ELFinder.Connector.ASPNet.Helpers
         /// <param name="request"></param>
         /// <param name="response"></param>
         /// <returns></returns>
-        public static bool IsFileFromCache(FileInfo info, HttpRequestBase request, HttpResponseBase response)
+        public static bool IsFileFromCache(FileInfo info, HttpRequest request, HttpResponse response)
         {
             DateTime updated = info.LastWriteTimeUtc;
             string filename = info.Name;
@@ -92,24 +93,25 @@ namespace ELFinder.Connector.ASPNet.Helpers
                 modifyDate = DateTime.UtcNow;
             }
             string eTag = GetFileETag(filename, updated);
-            if (!IsFileModified(updated, eTag, request))
-            {
-                response.StatusCode = (int)System.Net.HttpStatusCode.NotModified;
-                response.StatusDescription = "Not Modified";
-                response.AddHeader("Content-Length", "0");
-                response.Cache.SetCacheability(HttpCacheability.Public);
-                response.Cache.SetLastModified(updated);
-                response.Cache.SetETag(eTag);
-                return true;
-            }
-            else
-            {
-                response.Cache.SetAllowResponseInBrowserHistory(true);
-                response.Cache.SetCacheability(HttpCacheability.Public);
-                response.Cache.SetLastModified(updated);
-                response.Cache.SetETag(eTag);
-                return false;
-            }
+            //if (!IsFileModified(updated, eTag, request))
+            //{
+            //    response.StatusCode = (int)System.Net.HttpStatusCode.NotModified;
+            //    response.StatusDescription = "Not Modified";
+            //    response.Headers.Add("Content-Length", "0");
+            //    response.Cache.SetCacheability(HttpCacheability.Public);
+            //    response.Cache.SetLastModified(updated);
+            //    response.Cache.SetETag(eTag);
+            //    return true;
+            //}
+            //else
+            //{
+            //    response.Cache.SetAllowResponseInBrowserHistory(true);
+            //    response.Cache.SetCacheability(HttpCacheability.Public);
+            //    response.Cache.SetLastModified(updated);
+            //    response.Cache.SetETag(eTag);
+            //    return false;
+            //}
+            return false;
         }
 
         private static string GetFileETag(string fileName, DateTime modified)
@@ -117,7 +119,7 @@ namespace ELFinder.Connector.ASPNet.Helpers
             return "\"" + FileSystemUtils.GetFileMd5(fileName, modified) + "\"";
         }
 
-        private static bool IsFileModified(DateTime modifyDate, string eTag, HttpRequestBase request)
+        private static bool IsFileModified(DateTime modifyDate, string eTag, HttpRequest request)
         {
             DateTime modifiedSince;
             bool fileDateModified = true;

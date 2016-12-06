@@ -1,9 +1,11 @@
-﻿using System;
-using System.Web;
-using System.Web.Mvc;
-using ELFinder.Connector.Commands.Results.Content.Common;
+﻿using ELFinder.Connector.Commands.Results.Content.Common;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Internal;
+using Microsoft.Extensions.DependencyInjection;
+using System;
 
-namespace ELFinder.Connector.ASPNet.ActionResults.Files.Common
+namespace ELFinder.Connector.ASPNetCore.ActionResults.Files.Common
 {
 
     /// <summary>
@@ -46,10 +48,11 @@ namespace ELFinder.Connector.ASPNet.ActionResults.Files.Common
         /// </summary>
         /// <param name="context">Controller context</param>
         /// <param name="response">Response</param>
-        protected virtual void SetContentHeaders(ControllerContext context, HttpResponseBase response)
+        protected virtual void SetContentHeaders(ActionContext context, HttpResponse response)
         {
 
             // Set content type
+            //context.HttpContext.Response.ContentType= ContentType;
             response.ContentType = ContentType;
 
         }
@@ -62,7 +65,7 @@ namespace ELFinder.Connector.ASPNet.ActionResults.Files.Common
         /// Execute result
         /// </summary>
         /// <param name="context">Controller context</param>
-        public override void ExecuteResult(ControllerContext context)
+        public override void ExecuteResult(ActionContext context)
         {
 
             // Validate context
@@ -75,7 +78,14 @@ namespace ELFinder.Connector.ASPNet.ActionResults.Files.Common
             SetContentHeaders(context, response);
             
             // Write file
-            WriteFile(response);
+            if (context == null)
+            {
+                throw new ArgumentNullException(nameof(context));
+            }
+
+            var executor = context.HttpContext.RequestServices.GetRequiredService<FileStreamResultExecutor>();
+            executor.ExecuteAsync(context, this);
+
 
         }
 

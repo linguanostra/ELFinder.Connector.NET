@@ -1,13 +1,11 @@
-﻿using System;
-using System.Net;
-using System.Web;
-using System.Web.Mvc;
-using ELFinder.Connector.ASPNet.ActionResults.Files.Common;
-using ELFinder.Connector.ASPNet.Helpers;
+﻿using ELFinder.Connector.ASPNetCore.ActionResults.Files.Common;
 using ELFinder.Connector.Commands.Results.Image.Thumbnails;
 using ELFinder.Connector.Drivers.FileSystem.Utils;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using System;
 
-namespace ELFinder.Connector.ASPNet.ActionResults.Files
+namespace ELFinder.Connector.ASPNetCore.ActionResults.Files
 {
 
     /// <summary>
@@ -36,7 +34,7 @@ namespace ELFinder.Connector.ASPNet.ActionResults.Files
         /// </summary>
         /// <param name="context">Controller context</param>
         /// <param name="response">Response</param>
-        protected override void SetContentHeaders(ControllerContext context, HttpResponseBase response)
+        protected override void SetContentHeaders(ActionContext context, HttpResponse response)
         {
 
             // Call base method
@@ -48,26 +46,26 @@ namespace ELFinder.Connector.ASPNet.ActionResults.Files
             var eTag = GetFileETag(fileName, lastModified);
 
             // Get if file is considered modified
-            if (HttpCacheHelper.ReturnNotModified(eTag, lastModified, context))
-            {
+            //if (HttpCacheHelper.ReturnNotModified(eTag, lastModified, context))
+            //{
 
-                // Not modified
-                response.StatusCode = (int)HttpStatusCode.NotModified;
-                response.StatusDescription = "Not Modified";
-                response.AddHeader("Content-Length", "0");
-                response.Cache.SetCacheability(HttpCacheability.Public);
-                response.Cache.SetLastModified(lastModified);
-                response.Cache.SetETag(eTag);
+            //    // Not modified
+            //    response.StatusCode = (int)HttpStatusCode.NotModified;
+            //    response.StatusDescription = "Not Modified";
+            //    response.Headers.Add("Content-Length", "0");
+            //    response.Cache.SetCacheability(HttpCacheability.Public);
+            //    response.Cache.SetLastModified(lastModified);
+            //    response.Cache.SetETag(eTag);
 
-            }
-            else
-            {
+            //}
+            //else
+            //{
                 
-                // Modified
-                response.Headers["ETag"] = eTag;
-                response.Headers["Last-Modified"] = lastModified.ToString("R");                
+            //    // Modified
+            //    response.Headers["ETag"] = eTag;
+            //    response.Headers["Last-Modified"] = lastModified.ToString("R");                
 
-            }
+            //}
 
         }
 

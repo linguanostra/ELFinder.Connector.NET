@@ -1,11 +1,14 @@
-﻿using System.IO;
-using System.Text;
-using System.Web.Mvc;
-using ELFinder.Connector.Web.Serialization;
+﻿using ELFinder.Connector.Web.Serialization;
 using ELFinder.Connector.Web.Serialization.Values;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Formatters.Json.Internal;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Net.Http.Headers;
 using Newtonsoft.Json;
+using System;
+using System.Text;
 
-namespace ELFinder.Connector.ASPNet.ActionResults.Data
+namespace ELFinder.Connector.ASPNetCore.ActionResults.Data
 {
 
     /// <summary>
@@ -19,17 +22,16 @@ namespace ELFinder.Connector.ASPNet.ActionResults.Data
         /// <summary>
         /// Create a new instance
         /// </summary>
-        public ELFinderJsonDataResult()
-        {
-        }
+        //public ELFinderJsonDataResult()
+        //{
+        //}
 
         /// <summary>
         /// Create a new instance
         /// </summary>
         /// <param name="data">Data</param>
-        public ELFinderJsonDataResult(object data)
+        public ELFinderJsonDataResult(object data):base(data)
         {
-            Data = data;
         }
 
         #endregion
@@ -40,42 +42,50 @@ namespace ELFinder.Connector.ASPNet.ActionResults.Data
         /// Enables processing of the result of an action method by a custom type that inherits from the <see cref="T:System.Web.Mvc.ActionResult"/> class.
         /// </summary>
         /// <param name="context">The context within which the result is executed.</param><exception cref="T:System.ArgumentNullException">The <paramref name="context"/> parameter is null.</exception>
-        public override void ExecuteResult(ControllerContext context)
+        public override void ExecuteResult(ActionContext context)
         {
+            if (context == null)
+            {
+                throw new ArgumentNullException(nameof(context));
+            }
 
             // Get response
             var response = context.HttpContext.Response;
 
             // Set content type
-            response.ContentType = "application/json";
-
+            var mediaType = new MediaTypeHeaderValue("application/json");
             // Set content encoding
-            response.ContentEncoding = Encoding.UTF8;
+            mediaType.Encoding = Encoding.UTF8;
+
+            response.ContentType = mediaType.ToString();
 
             // Set status code
             response.StatusCode = 200;
 
             // Assign data content
-            if (Data != null)
-            {
-                using (var writer = new StreamWriter(response.OutputStream))
-                {
+            //if (Value != null)
+            //{
+            //    using (var writer = new StreamWriter(response.OutputStream))
+            //    {
 
-                    // Init Json text writer
-                    using (var jsonWriter = new JsonTextWriter(writer))
-                    {
+            //        // Init Json text writer
+            //        using (var jsonWriter = new JsonTextWriter(writer))
+            //        {
 
-                        // Init Json serializer
-                        var serializer = GetJsonSerializer();
+            //            // Init Json serializer
+            //            var serializer = GetJsonSerializer();
 
-                        // Serialize model
-                        serializer.Serialize(jsonWriter, Data);
+            //            // Serialize model
+            //            serializer.Serialize(jsonWriter, Value);
 
-                    }
+            //        }
 
-                }
+            //    }
 
-            }
+            //}
+            var services = context.HttpContext.RequestServices;
+            var executor = services.GetRequiredService<JsonResultExecutor>();
+            executor.ExecuteAsync(context, this);
 
         }
 
