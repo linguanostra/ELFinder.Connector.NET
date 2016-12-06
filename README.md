@@ -46,6 +46,9 @@ Solution `ELFinder.sln` was made with Visual Studio 2015. It's Nuget-enabled, th
  * Framework version 4.0.30506 (nuget dependency)
  * .NET Framework 4
 
+### ASP.NET MVC Core
+ * .NET Framework 4.6.2 
+
 ### NancyFX
  * NancyFX 1.4.3 (nuget dependency)
  * .NET Framework 4
