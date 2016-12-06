@@ -16,6 +16,7 @@ using ELFinder.Connector.Web.Serialization;
 namespace Microsoft.AspNetCore.Mvc.Formatters.Json.Internal
 {
     /// <summary>
+    /// ELFInder Json Result Executor
     /// Executes a <see cref="JsonResult"/> to write to the response.
     /// </summary>
     public class ELFinderJsonResultExecutor

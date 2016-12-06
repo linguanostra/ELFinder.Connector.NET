@@ -40,6 +40,10 @@ namespace ELFinder.Connector.ASPNetCore.ActionResults.Data
 
         #region Overrides
 
+        /// <summary>
+        /// Enables processing of the result of an action method by a custom type that inherits from the <see cref="T:System.Web.Mvc.ActionResult"/> class.
+        /// </summary>
+        /// <param name="context">The context within which the result is executed.</param><exception cref="T:System.ArgumentNullException">The <paramref name="context"/> parameter is null.</exception>
         public override Task ExecuteResultAsync(ActionContext context)
         {
             if (context == null)
@@ -47,25 +51,6 @@ namespace ELFinder.Connector.ASPNetCore.ActionResults.Data
                 throw new ArgumentNullException(nameof(context));
             }
 
-            // Get response
-            var response = context.HttpContext.Response;
-
-            // Set content type
-            var mediaType = new MediaTypeHeaderValue("application/json");
-            // Set content encoding
-            mediaType.Encoding = Encoding.UTF8;
-
-            response.ContentType = mediaType.ToString();
-
-            // Set status code
-            response.StatusCode = 200;
-
-            // Assign data content
-            if (Value != null)
-            {
-                
-
-            }
             var services = context.HttpContext.RequestServices;
             var executor = services.GetRequiredService<ELFinderJsonResultExecutor>();
             return executor.ExecuteAsync(context, this);
@@ -77,27 +62,7 @@ namespace ELFinder.Connector.ASPNetCore.ActionResults.Data
         /// <param name="context">The context within which the result is executed.</param><exception cref="T:System.ArgumentNullException">The <paramref name="context"/> parameter is null.</exception>
         public override void ExecuteResult(ActionContext context)
         {
-            if (context == null)
-            {
-                throw new ArgumentNullException(nameof(context));
-            }
-
-            // Get response
-            var response = context.HttpContext.Response;
-
-            // Set content type
-            var mediaType = new MediaTypeHeaderValue("application/json");
-            // Set content encoding
-            mediaType.Encoding = Encoding.UTF8;
-
-            response.ContentType = mediaType.ToString();
-
-            // Set status code
-            response.StatusCode = 200;
-
-            var services = context.HttpContext.RequestServices;
-            var executor = services.GetRequiredService<ELFinderJsonResultExecutor>();
-            executor.ExecuteAsync(context, this);
+            ExecuteResultAsync(context);
         }
 
         #endregion
