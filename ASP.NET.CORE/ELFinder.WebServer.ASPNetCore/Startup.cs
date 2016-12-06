@@ -7,6 +7,10 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using ELFinder.WebServer.ASPNetCore.Config;
+using ELFinder.Connector.Config;
+using Microsoft.AspNetCore.Mvc;
+using ELFinder.Connector.ASPNetCore.ModelBinders;
 
 namespace ELFinder.WebServer.ASPNetCore
 {
@@ -28,7 +32,10 @@ namespace ELFinder.WebServer.ASPNetCore
         public void ConfigureServices(IServiceCollection services)
         {
             // Add framework services.
-            services.AddMvc();
+            services.AddMvc().Services.Configure<MvcOptions>(options => {
+                // Use custom model binder
+                options.ModelBinderProviders.Insert(0, new ELFinderModelBinderProvider());
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -51,10 +58,43 @@ namespace ELFinder.WebServer.ASPNetCore
 
             app.UseMvc(routes =>
             {
-                routes.MapRoute(
-                    name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                // Commands
+                routes.MapRoute("Connector", "ELFinderConnector",
+                    new { controller = "ELFinderConnector", action = "Main" });
+
+                // Thumbnails
+                routes.MapRoute("Thumbnauls", "Thumbnails/{target}",
+                    new { controller = "ELFinderConnector", action = "Thumbnails" });
+
+                // Index view
+                routes.MapRoute("Default", "{controller}/{action}",
+                    new { controller = "ELFinder", action = "Index" }
+                );
             });
+
+            // Initialize ELFinder configuration
+            InitELFinderConfiguration(env);
+        }
+
+        // Initialize ELFinder configuration
+        protected void InitELFinderConfiguration(IHostingEnvironment env)
+        {
+
+            SharedConfig.ELFinder = new ELFinderConfig(
+                env.ContentRootPath + @"\App_Data",
+                thumbnailsUrl: "Thumbnails/"
+                );
+
+            SharedConfig.ELFinder.RootVolumes.Add(
+                new ELFinderRootVolumeConfigEntry(
+                    env.ContentRootPath + @"\App_Data\Files",
+                    isLocked: false,
+                    isReadOnly: false,
+                    isShowOnly: false,
+                    maxUploadSizeKb: null,      // null = Unlimited upload size
+                    uploadOverwrite: true,
+                    startDirectory: ""));
+
         }
     }
 }
