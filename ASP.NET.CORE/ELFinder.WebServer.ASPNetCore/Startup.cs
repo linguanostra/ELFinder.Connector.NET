@@ -11,6 +11,7 @@ using ELFinder.WebServer.ASPNetCore.Config;
 using ELFinder.Connector.Config;
 using Microsoft.AspNetCore.Mvc;
 using ELFinder.Connector.ASPNetCore.ModelBinders;
+using Microsoft.AspNetCore.Mvc.Formatters.Json.Internal;
 
 namespace ELFinder.WebServer.ASPNetCore
 {
@@ -33,9 +34,12 @@ namespace ELFinder.WebServer.ASPNetCore
         {
             // Add framework services.
             services.AddMvc().Services.Configure<MvcOptions>(options => {
-                // Use custom model binder
+                // Use custom ELFinder model binder
                 options.ModelBinderProviders.Insert(0, new ELFinderModelBinderProvider());
+                
             });
+            // Use custom ELFinder Json Result Executer
+            services.AddSingleton<ELFinderJsonResultExecutor>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

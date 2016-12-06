@@ -6,7 +6,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Net.Http.Headers;
 using Newtonsoft.Json;
 using System;
+using System.IO;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace ELFinder.Connector.ASPNetCore.ActionResults.Data
 {
@@ -38,6 +40,37 @@ namespace ELFinder.Connector.ASPNetCore.ActionResults.Data
 
         #region Overrides
 
+        public override Task ExecuteResultAsync(ActionContext context)
+        {
+            if (context == null)
+            {
+                throw new ArgumentNullException(nameof(context));
+            }
+
+            // Get response
+            var response = context.HttpContext.Response;
+
+            // Set content type
+            var mediaType = new MediaTypeHeaderValue("application/json");
+            // Set content encoding
+            mediaType.Encoding = Encoding.UTF8;
+
+            response.ContentType = mediaType.ToString();
+
+            // Set status code
+            response.StatusCode = 200;
+
+            // Assign data content
+            if (Value != null)
+            {
+                
+
+            }
+            var services = context.HttpContext.RequestServices;
+            var executor = services.GetRequiredService<ELFinderJsonResultExecutor>();
+            return executor.ExecuteAsync(context, this);
+        }
+
         /// <summary>
         /// Enables processing of the result of an action method by a custom type that inherits from the <see cref="T:System.Web.Mvc.ActionResult"/> class.
         /// </summary>
@@ -62,56 +95,9 @@ namespace ELFinder.Connector.ASPNetCore.ActionResults.Data
             // Set status code
             response.StatusCode = 200;
 
-            // Assign data content
-            //if (Value != null)
-            //{
-            //    using (var writer = new StreamWriter(response.OutputStream))
-            //    {
-
-            //        // Init Json text writer
-            //        using (var jsonWriter = new JsonTextWriter(writer))
-            //        {
-
-            //            // Init Json serializer
-            //            var serializer = GetJsonSerializer();
-
-            //            // Serialize model
-            //            serializer.Serialize(jsonWriter, Value);
-
-            //        }
-
-            //    }
-
-            //}
             var services = context.HttpContext.RequestServices;
-            var executor = services.GetRequiredService<JsonResultExecutor>();
+            var executor = services.GetRequiredService<ELFinderJsonResultExecutor>();
             executor.ExecuteAsync(context, this);
-
-        }
-
-        #endregion
-
-        #region Methods
-
-        /// <summary>
-        /// Get the Json serializer
-        /// </summary>
-        /// <returns>Result</returns>
-        protected virtual JsonSerializer GetJsonSerializer()
-        {
-
-            // Get default serializer
-            var serializer = new JsonSerializer();
-
-            // Add converters
-            serializer.Converters.Add(new ELFinderResponseBooleanValueConverter());
-
-            // Set contract resolver
-            serializer.ContractResolver = new ELFinderResponseContractResolver();
-
-            // Return it
-            return serializer;
-
         }
 
         #endregion

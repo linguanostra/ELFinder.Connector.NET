@@ -417,6 +417,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ActionResults\Data\ELFinderJsonDataResult.cs" />
+    <Compile Include="ActionResults\Data\ELFinderJsonResultExecutor.cs" />
     <Compile Include="ActionResults\Files\Common\ELFinderContentCommandStreamResult.cs" />
     <Compile Include="ActionResults\Files\ELFinderFileDownloadResult.cs" />
     <Compile Include="ActionResults\Files\ELFinderGetThumbnailResult.cs" />
