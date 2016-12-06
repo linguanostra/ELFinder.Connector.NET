@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25123.0
+# Visual Studio 15
+VisualStudioVersion = 15.0.25928.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ELFinder.Connector", "Core\ELFinder.Connector\ELFinder.Connector.csproj", "{0C1E3DE2-1858-4EA5-9B95-35648AD24C79}"
 EndProject
@@ -22,6 +22,12 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ELFinder.Connector.ASPNet", "ASP.NET\ELFinder.Connector.ASPNet\ELFinder.Connector.ASPNet.csproj", "{41524E2B-443D-4B45-97E2-527DA84B5C80}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ELFinder.WebServer.ASPNet", "ASP.NET\ELFinder.WebServer.ASPNet\ELFinder.WebServer.ASPNet.csproj", "{0F03C8EC-2F63-4958-9B9D-385FA66ABE19}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ASPNetCore", "ASPNetCore", "{5C2ACB7F-899B-4797-8465-E742A4DD8666}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ELFinder.Connector.ASPNetCore", "ASP.NET.CORE\ELFinder.Connector.ASPNetCore\ELFinder.Connector.ASPNetCore.csproj", "{3E2DE043-E051-4FB2-AC5C-56A9D35B1F67}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ELFinder.WebServer.ASPNetCore", "ASP.NET.CORE\ELFinder.WebServer.ASPNetCore\ELFinder.WebServer.ASPNetCore.csproj", "{C2015F58-6F03-48C4-8772-BC80E9677EAC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -53,6 +59,14 @@ Global
 		{0F03C8EC-2F63-4958-9B9D-385FA66ABE19}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0F03C8EC-2F63-4958-9B9D-385FA66ABE19}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0F03C8EC-2F63-4958-9B9D-385FA66ABE19}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3E2DE043-E051-4FB2-AC5C-56A9D35B1F67}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3E2DE043-E051-4FB2-AC5C-56A9D35B1F67}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3E2DE043-E051-4FB2-AC5C-56A9D35B1F67}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3E2DE043-E051-4FB2-AC5C-56A9D35B1F67}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C2015F58-6F03-48C4-8772-BC80E9677EAC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C2015F58-6F03-48C4-8772-BC80E9677EAC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C2015F58-6F03-48C4-8772-BC80E9677EAC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C2015F58-6F03-48C4-8772-BC80E9677EAC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -64,5 +78,7 @@ Global
 		{53E46206-9C68-4A41-B599-84E45AF994CC} = {8ECE79CC-3931-4F1D-8253-06FA3AD009EE}
 		{41524E2B-443D-4B45-97E2-527DA84B5C80} = {D8424DA7-BD05-4274-A9D3-4E003A592CCD}
 		{0F03C8EC-2F63-4958-9B9D-385FA66ABE19} = {D8424DA7-BD05-4274-A9D3-4E003A592CCD}
+		{3E2DE043-E051-4FB2-AC5C-56A9D35B1F67} = {5C2ACB7F-899B-4797-8465-E742A4DD8666}
+		{C2015F58-6F03-48C4-8772-BC80E9677EAC} = {5C2ACB7F-899B-4797-8465-E742A4DD8666}
 	EndGlobalSection
 EndGlobal
