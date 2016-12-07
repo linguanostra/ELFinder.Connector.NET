@@ -12,8 +12,10 @@ using Microsoft.Net.Http.Headers;
 using Newtonsoft.Json;
 using ELFinder.Connector.Web.Serialization.Values;
 using ELFinder.Connector.Web.Serialization;
+using Microsoft.AspNetCore.Mvc.Formatters.Json.Internal;
+using Microsoft.AspNetCore.Mvc;
 
-namespace Microsoft.AspNetCore.Mvc.Formatters.Json.Internal
+namespace ELFinder.Connector.ASPNetCore.ActionResults.Data
 {
     /// <summary>
     /// ELFInder Json Result Executor

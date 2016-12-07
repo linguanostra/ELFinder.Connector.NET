@@ -76,6 +76,11 @@
     <Folder Include="wwwroot\lib\elfinder\files\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Content Update="wwwroot\Sounds\rm.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
   <!--
    <Target Name="BeforePublish">
     <Exec Command="bower install" />
