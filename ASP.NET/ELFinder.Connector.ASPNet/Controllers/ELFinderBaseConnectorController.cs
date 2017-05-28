@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using ELFinder.Connector.ASPNet.ActionResults.Data;
@@ -247,7 +248,12 @@ namespace ELFinder.Connector.ASPNet.Controllers
             command.Driver = Driver;
 
             // Assign files
-            command.Files = Request.Files.AllKeys.Select(x => new HttpFileStream(Request.Files.Get(x)));
+            var httpFiles = new List<HttpFileStream>();
+            for (var fileIndex = 0; fileIndex < Request.Files.Count; fileIndex++)
+            {
+                httpFiles.Add(new HttpFileStream(Request.Files.Get(fileIndex)));
+            }
+            command.Files = httpFiles;
 
             // Execute it
             return executeCommandHandler(command);
