@@ -1,0 +1,45 @@
+﻿
+@{
+    ViewData["Title"] = "elFinder 2.1";
+}
+<p style="padding:20px 0px;">
+    ElFinder 2.1
+</p>
+<!-- Element where elFinder will be created (REQUIRED) -->
+<div id="elfinder"></div>
+
+
+@section Scripts {
+    <!-- jQuery and jQuery UI (REQUIRED) -->
+
+    <link href="/lib/jquery-ui/themes/smoothness/jquery-ui.min.css" rel="stylesheet" />
+    <script src="/lib/jquery-ui/jquery-ui.min.js"></script>
+
+    <!-- elFinder CSS (REQUIRED) -->
+    <link href="/lib/elfinder/css/elfinder.min.css" rel="stylesheet" />
+    <link href="/lib/elfinder/css/theme.css" rel="stylesheet" />
+
+    <!-- elFinder JS (REQUIRED) -->
+    <script src="/lib/elfinder/js/elfinder.full.js"></script>
+
+    <!-- elFinder translation (OPTIONAL) -->    
+    <script src="/lib/jquery-ui/ui/i18n/datepicker-fr.js"></script>
+
+    <!-- elFinder initialization (REQUIRED) -->
+    <script type="text/javascript" charset="utf-8">
+
+            // Documentation for client options:
+            // https://github.com/Studio-42/elFinder/wiki/Client-configuration-options
+            $(document).ready(function () {
+
+                $('#elfinder').elfinder({
+                    url: "/ELFinderConnector",
+                    useBrowserHistory: false,
+                    rememberLastDir: true
+                    //lang: 'fr'                    // language (OPTIONAL)
+                });
+
+            });
+
+    </script>
+}
