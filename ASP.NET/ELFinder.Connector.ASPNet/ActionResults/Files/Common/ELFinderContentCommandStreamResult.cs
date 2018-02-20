@@ -75,7 +75,20 @@ namespace ELFinder.Connector.ASPNet.ActionResults.Files.Common
             SetContentHeaders(context, response);
             
             // Write file
-            WriteFile(response);
+            //WriteFile(response);
+            int chunkSize = 8192;
+            byte[] buffer = new byte[chunkSize];
+            int offset = 0;
+            int read = 0;
+            var fs = base.FileStream;
+            
+            while ((read = fs.Read(buffer, offset, chunkSize)) > 0)
+            {
+                if (!response.IsClientConnected)                    break;
+                response.OutputStream.Write(buffer, 0, read);
+                response.Flush();
+            }
+            
 
         }
 
